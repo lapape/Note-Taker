@@ -11,6 +11,7 @@ User will need to install expressjs to utalize this app. The app is hosted on he
 ## Usage
 
 Click get started. Type note title and note text and then click the save button. Saved notes are listed on the right. Click on a saved note to view it again.
+Link to deployed app: https://murmuring-woodland-26489.herokuapp.com/
 
 ## Credits
 
