@@ -25,26 +25,30 @@ app.get("/notes", (req, res) =>
 app.get("/api/notes", (req, res) =>
   res.sendFile(path.join(__dirname, "/db/db.json"))
 );
+
+//post new note
 app.post("/api/notes", (req, res) => {
   const newNote = req.body;
 
+  //get list of notes from db
   const noteList = JSON.parse(
     fs.readFileSync(path.join(__dirname, "/db/db.json"), {
       encoding: "utf-8",
     })
   );
-
+  //add IDs to new notes
   if (noteList.length === 0) {
     newNote.id = 0;
   } else {
     newNote.id = noteList[noteList.length - 1].id + 1;
   }
   noteList.push(newNote);
-  console.log(noteList);
+  //rewrite db files with new note array
   fs.writeFileSync(
     path.join(__dirname, "/db/db.json"),
     JSON.stringify(noteList)
   );
+  //add newnote to html
   res.json(newNote);
 });
 
